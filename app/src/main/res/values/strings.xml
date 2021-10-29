@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Project X</string>
+
+    <!--  UserAuthFragment  -->
+    <string name="welcome">Welcome</string>
+    <string name="login_label">Login</string>
+    <string name="password_label">Password</string>
+    <string name="log_in">Log in</string>
 </resources>

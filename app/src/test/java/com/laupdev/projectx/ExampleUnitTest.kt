@@ -1,4 +1,4 @@
-package com.example.projectx
+package com.laupdev.projectx
 
 import org.junit.Test
 
