@@ -6,4 +6,6 @@
     <string name="login_label">Login</string>
     <string name="password_label">Password</string>
     <string name="log_in">Log in</string>
+
+    <string name="wrong_data">Wrong login or password</string>
 </resources>

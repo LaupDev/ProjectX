@@ -4,8 +4,8 @@ import com.laupdev.projectx.database.UserDao
 
 class UserRepository(private val userDao: UserDao) {
 
-    fun getUserByUsername(username: String) = userDao.getUserByUsername(username)
+    suspend fun getUserByUsername(username: String) = userDao.getUserByUsername(username)
 
-    fun getUserByEmail(email: String) = userDao.getUserByEmail(email)
+    suspend fun getUserByEmail(email: String) = userDao.getUserByEmail(email)
 
 }

@@ -1,9 +1,6 @@
 package com.laupdev.projectx.database
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.Index
+import androidx.room.*
 
 @Entity(
     tableName = "Gallery",
@@ -20,6 +17,8 @@ import androidx.room.Index
     ]
 )
 data class Picture(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
     @ColumnInfo(name = "hotel_id")
     val hotel_id: Int,
     @ColumnInfo(name = "image_title")
