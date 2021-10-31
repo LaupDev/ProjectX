@@ -1,4 +1,4 @@
-package com.laupdev.projectx.fragments
+package com.laupdev.projectx.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
