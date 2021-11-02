@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.laupdev.projectx.R
 import com.laupdev.projectx.database.Hotel
@@ -34,5 +36,4 @@ class HotelsListRecyclerViewAdapter(private val hotelsList: List<Hotel>) :
     override fun getItemCount(): Int {
         return hotelsList.size
     }
-
 }

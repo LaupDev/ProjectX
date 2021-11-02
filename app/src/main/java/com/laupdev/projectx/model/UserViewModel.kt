@@ -15,14 +15,13 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     fun authenticateUser(login: String, password: String) {
         viewModelScope.launch {
-            if (isEmail(login)) {
+            val user = if (isEmail(login)) {
                 userRepository.getUserByEmail(login)
             } else {
                 userRepository.getUserByUsername(login)
-            }.let { user ->
-                Timber.e(user.toString())
-                _isLoggedIn.value = user != null && user.password == password
             }
+            Timber.e(user.toString())
+            _isLoggedIn.value = user != null && user.password == password
         }
     }
 

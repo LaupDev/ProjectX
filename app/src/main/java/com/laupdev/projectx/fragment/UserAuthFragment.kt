@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.laupdev.projectx.R
 import com.laupdev.projectx.databinding.FragmentUserAuthBinding
 import com.laupdev.projectx.model.UserViewModel
@@ -31,15 +32,14 @@ class UserAuthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.logInBtn.setOnClickListener {
-            val result = viewModel.authenticateUser(binding.loginInputEditText.text.toString(), binding.passwordInputEditText.text.toString())
-            Timber.d(result.toString())
+            viewModel.authenticateUser(binding.loginInputEditText.text.toString(), binding.passwordInputEditText.text.toString())
         }
 
         viewModel.isLoggedIn.observe(viewLifecycleOwner) {
             it?.let {
                 if (it) {
-                    Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
-                    // TODO: 31.10.2021 Go to next page
+                    val action = UserAuthFragmentDirections.goToHotelsList()
+                    findNavController().navigate(action)
                 } else {
                     Toast.makeText(requireContext(), R.string.wrong_data, Toast.LENGTH_SHORT).show()
                 }

@@ -35,14 +35,29 @@ val repositoryModule = module {
 val databaseModule = module {
 
     fun provideDatabase(application: Application): AppDatabase {
-        return AppDatabase.getDatabase(application)
+        val isAlreadyCreated = application.databaseList().any { it == "project_x_database" }
+        val database = Room.databaseBuilder(
+            application,
+            AppDatabase::class.java,
+            "project_x_database"
+        )
+            .build()
+        if (!isAlreadyCreated) {
+            database.populateDatabase(application)
+        }
+        return database
     }
 
     fun provideUserDao(database: AppDatabase): UserDao {
         return database.userDao()
     }
 
+    fun provideHotelDao(database: AppDatabase): HotelDao {
+        return database.hotelDao()
+    }
+
     single { provideDatabase(androidApplication()) }
     single { provideUserDao(get()) }
+    single { provideHotelDao(get()) }
 }
 
