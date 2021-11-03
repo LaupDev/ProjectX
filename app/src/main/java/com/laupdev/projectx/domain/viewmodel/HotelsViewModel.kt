@@ -1,6 +1,7 @@
 package com.laupdev.projectx.domain.viewmodel
 
 import androidx.lifecycle.*
+import com.laupdev.projectx.data.database.Hotel
 import com.laupdev.projectx.domain.adapter.HotelAdapter
 import com.laupdev.projectx.domain.repository.IRepository
 import kotlinx.coroutines.launch
@@ -14,6 +15,10 @@ class HotelsViewModel(private val repository: IRepository) : ViewModel() {
         private set
 
     val hotelAdapter = HotelAdapter(mutableListOf())
+
+    private val _hotelWithAllInfo = MutableLiveData<Hotel>()
+    val hotelWithAllInfo: LiveData<Hotel>
+        get() = _hotelWithAllInfo
 
     init {
         Timber.i("init: getHotelsPaging()")
@@ -33,6 +38,12 @@ class HotelsViewModel(private val repository: IRepository) : ViewModel() {
                 }
             }
 
+        }
+    }
+
+    fun getHotelWithAllInfo(hotelId: Int) {
+        viewModelScope.launch {
+            _hotelWithAllInfo.value = repository.getHotelWithAllInfo(hotelId)
         }
     }
 

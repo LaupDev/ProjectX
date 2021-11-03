@@ -7,14 +7,14 @@ import com.laupdev.projectx.data.database.Hotel
 import com.laupdev.projectx.databinding.ItemHotelBinding
 
 class HotelAdapter(private val hotelsList: MutableList<Hotel>) :
-    RecyclerView.Adapter<HotelItemViewHolder>() {
+    RecyclerView.Adapter<HotelsListItemViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HotelItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HotelsListItemViewHolder {
         val binding = ItemHotelBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return HotelItemViewHolder(binding)
+        return HotelsListItemViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: HotelItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HotelsListItemViewHolder, position: Int) {
         holder.bind(hotelsList[position])
     }
 
