@@ -1,11 +1,10 @@
-package com.laupdev.projectx
+package com.laupdev.projectx.presentation
 
 import android.app.Application
-import com.laupdev.projectx.database.AppDatabase
-import com.laupdev.projectx.di.databaseModule
-import com.laupdev.projectx.di.repositoryModule
-import com.laupdev.projectx.di.viewModelModule
-import org.koin.android.ext.android.inject
+import com.laupdev.projectx.BuildConfig
+import com.laupdev.projectx.presentation.di.databaseModule
+import com.laupdev.projectx.presentation.di.repositoryModule
+import com.laupdev.projectx.presentation.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

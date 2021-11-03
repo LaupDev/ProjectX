@@ -1,9 +1,8 @@
-package com.laupdev.projectx.database
+package com.laupdev.projectx.data.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface HotelDao {

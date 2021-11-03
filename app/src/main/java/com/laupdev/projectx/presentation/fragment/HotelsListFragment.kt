@@ -1,4 +1,4 @@
-package com.laupdev.projectx.fragment
+package com.laupdev.projectx.presentation.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -7,10 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.laupdev.projectx.adapter.HotelsListRecyclerViewAdapter
-import com.laupdev.projectx.database.Hotel
 import com.laupdev.projectx.databinding.FragmentHotelsListBinding
-import com.laupdev.projectx.model.HotelsViewModel
+import com.laupdev.projectx.domain.viewmodel.HotelsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -35,17 +33,8 @@ class HotelsListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val hotelsList = mutableListOf<Hotel>()
-        val adapter = HotelsListRecyclerViewAdapter(hotelsList)
-
         recyclerView = binding.hotelsList
-        recyclerView.adapter = adapter
-
-        viewModel.hotelsList.observe(viewLifecycleOwner) {
-            it?.let {
-                adapter.addHotelsToDataset(it)
-            }
-        }
+        recyclerView.adapter = viewModel.hotelAdapter
 
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {

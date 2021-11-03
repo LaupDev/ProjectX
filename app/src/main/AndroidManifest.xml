@@ -3,7 +3,7 @@
     package="com.laupdev.projectx">
 
     <application
-        android:name=".MyApplication"
+        android:name=".presentation.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectX">
         <activity
-            android:name="com.laupdev.projectx.MainActivity"
+            android:name="com.laupdev.projectx.presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

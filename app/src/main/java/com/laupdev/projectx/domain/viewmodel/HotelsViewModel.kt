@@ -1,19 +1,19 @@
-package com.laupdev.projectx.model
+package com.laupdev.projectx.domain.viewmodel
 
 import androidx.lifecycle.*
-import com.laupdev.projectx.database.Hotel
+import com.laupdev.projectx.domain.adapter.HotelAdapter
+import com.laupdev.projectx.domain.repository.IRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class HotelsViewModel(private val hotelsRepository: HotelsRepository) : ViewModel() {
+class HotelsViewModel(private val repository: IRepository) : ViewModel() {
 
     private var lastHotelId = 0
     private val size = 10
     var isLoadingAllowed = true
+        private set
 
-    private val _hotelsList = MutableLiveData<List<Hotel>>()
-    val hotelsList: LiveData<List<Hotel>>
-        get() = _hotelsList
+    val hotelAdapter = HotelAdapter(mutableListOf())
 
     init {
         Timber.i("init: getHotelsPaging()")
@@ -24,11 +24,11 @@ class HotelsViewModel(private val hotelsRepository: HotelsRepository) : ViewMode
         isLoadingAllowed = false
         viewModelScope.launch {
 
-            with(hotelsRepository.getHotelsPaging(lastHotelId, size)) {
+            with(repository.getHotelsPaging(lastHotelId, size)) {
                 Timber.i(size.toString())
                 if (isNotEmpty()) {
                     lastHotelId = last().id
-                    _hotelsList.value = this
+                    hotelAdapter.addHotelsToDataset(this)
                     isLoadingAllowed = true
                 }
             }

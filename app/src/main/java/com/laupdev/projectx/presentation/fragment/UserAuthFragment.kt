@@ -1,4 +1,4 @@
-package com.laupdev.projectx.fragment
+package com.laupdev.projectx.presentation.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.laupdev.projectx.R
 import com.laupdev.projectx.databinding.FragmentUserAuthBinding
-import com.laupdev.projectx.model.UserViewModel
+import com.laupdev.projectx.domain.viewmodel.UserViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserAuthFragment : Fragment() {

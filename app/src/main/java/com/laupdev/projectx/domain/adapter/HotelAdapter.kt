@@ -1,12 +1,12 @@
-package com.laupdev.projectx.adapter
+package com.laupdev.projectx.domain.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.laupdev.projectx.database.Hotel
+import com.laupdev.projectx.data.database.Hotel
 import com.laupdev.projectx.databinding.ItemHotelBinding
 
-class HotelsListRecyclerViewAdapter(private val hotelsList: MutableList<Hotel>) :
+class HotelAdapter(private val hotelsList: MutableList<Hotel>) :
     RecyclerView.Adapter<HotelItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HotelItemViewHolder {

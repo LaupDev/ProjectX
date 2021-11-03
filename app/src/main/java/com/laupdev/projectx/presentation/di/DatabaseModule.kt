@@ -1,36 +1,12 @@
-package com.laupdev.projectx.di
+package com.laupdev.projectx.presentation.di
 
 import android.app.Application
 import androidx.room.Room
-import com.laupdev.projectx.database.AppDatabase
-import com.laupdev.projectx.database.HotelDao
-import com.laupdev.projectx.database.UserDao
-import com.laupdev.projectx.model.HotelsRepository
-import com.laupdev.projectx.model.HotelsViewModel
-import com.laupdev.projectx.model.UserRepository
-import com.laupdev.projectx.model.UserViewModel
+import com.laupdev.projectx.data.database.AppDatabase
+import com.laupdev.projectx.data.database.HotelDao
+import com.laupdev.projectx.data.database.UserDao
 import org.koin.android.ext.koin.androidApplication
-import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-
-val viewModelModule = module {
-    viewModel { UserViewModel(get()) }
-    viewModel { HotelsViewModel(get()) }
-}
-
-val repositoryModule = module {
-
-    fun provideUserRepository(userDao: UserDao): UserRepository {
-        return UserRepository(userDao)
-    }
-
-    fun provideHotelsRepository(hotelDao: HotelDao): HotelsRepository {
-        return HotelsRepository(hotelDao)
-    }
-
-    single { provideUserRepository(get()) }
-    single { provideHotelsRepository(get()) }
-}
 
 val databaseModule = module {
 
@@ -60,4 +36,3 @@ val databaseModule = module {
     single { provideUserDao(get()) }
     single { provideHotelDao(get()) }
 }
-

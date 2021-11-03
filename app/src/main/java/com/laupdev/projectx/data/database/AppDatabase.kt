@@ -1,15 +1,11 @@
-package com.laupdev.projectx.database
+package com.laupdev.projectx.data.database
 
 import android.app.Application
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.graphics.drawable.toBitmap
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.laupdev.projectx.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

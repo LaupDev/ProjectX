@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:paddingBottom="80dp"
-    tools:context="com.laupdev.projectx.fragment.UserAuthFragment">
+    tools:context=".presentation.fragment.UserAuthFragment">
 
     <TextView
         android:id="@+id/welcome"

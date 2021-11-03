@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/userAuthFragment"
-        android:name="com.laupdev.projectx.fragment.UserAuthFragment"
+        android:name="com.laupdev.projectx.presentation.fragment.UserAuthFragment"
         android:label="fragment_user_auth"
         tools:layout="@layout/fragment_user_auth" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/hotelsListFragment"
-        android:name="com.laupdev.projectx.fragment.HotelsListFragment"
+        android:name="com.laupdev.projectx.presentation.fragment.HotelsListFragment"
         android:label="fragment_hotels_list"
         tools:layout="@layout/fragment_hotels_list" />
 </navigation>
