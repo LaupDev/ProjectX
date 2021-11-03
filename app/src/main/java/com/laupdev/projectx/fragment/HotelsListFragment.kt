@@ -43,8 +43,7 @@ class HotelsListFragment : Fragment() {
 
         viewModel.hotelsList.observe(viewLifecycleOwner) {
             it?.let {
-                hotelsList.addAll(it)
-                adapter.notifyDataSetChanged()
+                adapter.addHotelsToDataset(it)
             }
         }
 
@@ -52,7 +51,7 @@ class HotelsListFragment : Fragment() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (!recyclerView.canScrollVertically(1)) {
-                    if (viewModel.isDataLoaded) {
+                    if (viewModel.isLoadingAllowed) {
                         Timber.e("LOAD DATA")
                         viewModel.getHotelsPaging()
                     }
@@ -60,6 +59,11 @@ class HotelsListFragment : Fragment() {
             }
         })
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

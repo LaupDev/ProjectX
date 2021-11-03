@@ -2,7 +2,6 @@ package com.laupdev.projectx.model
 
 import androidx.lifecycle.*
 import com.laupdev.projectx.database.Hotel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -10,7 +9,7 @@ class HotelsViewModel(private val hotelsRepository: HotelsRepository) : ViewMode
 
     private var lastHotelId = 0
     private val size = 10
-    var isDataLoaded = true
+    var isLoadingAllowed = true
 
     private val _hotelsList = MutableLiveData<List<Hotel>>()
     val hotelsList: LiveData<List<Hotel>>
@@ -22,7 +21,7 @@ class HotelsViewModel(private val hotelsRepository: HotelsRepository) : ViewMode
     }
 
     fun getHotelsPaging() {
-        isDataLoaded = false
+        isLoadingAllowed = false
         viewModelScope.launch {
 
             with(hotelsRepository.getHotelsPaging(lastHotelId, size)) {
@@ -30,7 +29,7 @@ class HotelsViewModel(private val hotelsRepository: HotelsRepository) : ViewMode
                 if (isNotEmpty()) {
                     lastHotelId = last().id
                     _hotelsList.value = this
-                    isDataLoaded = true
+                    isLoadingAllowed = true
                 }
             }
 

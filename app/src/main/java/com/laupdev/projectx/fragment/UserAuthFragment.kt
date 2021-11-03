@@ -11,7 +11,6 @@ import com.laupdev.projectx.R
 import com.laupdev.projectx.databinding.FragmentUserAuthBinding
 import com.laupdev.projectx.model.UserViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class UserAuthFragment : Fragment() {
 
