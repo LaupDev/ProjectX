@@ -33,7 +33,7 @@ class HotelsListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView = binding.hotelsList
+        recyclerView = binding.hotelsRecyclerView
         recyclerView.adapter = viewModel.hotelAdapter
 
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
