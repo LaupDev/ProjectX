@@ -27,6 +27,9 @@ class HotelDetailsOverviewFragment : Fragment() {
         arguments?.let {
             hotelId = it.getInt(HOTEL_ID_ARG)
         }
+        if (hotelId != null) {
+            viewModel.getHotelById(hotelId!!)
+        }
     }
 
     override fun onCreateView(
@@ -40,9 +43,6 @@ class HotelDetailsOverviewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (hotelId != null) {
-            viewModel.getHotelById(hotelId!!)
-        }
         viewModel.currentHotel.observe(viewLifecycleOwner) {
             it.let {
                 Picasso.get().load(File(it.imagePath)).into(binding.mainPhotoImage)

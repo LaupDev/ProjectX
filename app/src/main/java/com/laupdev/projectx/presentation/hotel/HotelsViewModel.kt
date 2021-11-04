@@ -1,6 +1,7 @@
 package com.laupdev.projectx.presentation.hotel
 
 import androidx.lifecycle.*
+import com.laupdev.projectx.data.database.ContactInfo
 import com.laupdev.projectx.data.database.Hotel
 import com.laupdev.projectx.data.database.Picture
 import com.laupdev.projectx.domain.adapter.HotelAdapter
@@ -19,11 +20,15 @@ class HotelsViewModel(private val repository: IRepository) : ViewModel() {
     val hotelAdapter = HotelAdapter(mutableListOf())
     val pictureAdapter = PictureAdapter(mutableListOf())
 
-    private var pictures: List<Picture>? = null
+    private var currentHotelPictures: List<Picture>? = null
 
     private val _currentHotel = MutableLiveData<Hotel>()
     val currentHotel: LiveData<Hotel>
         get() = _currentHotel
+
+    private val _currentHotelContacts = MutableLiveData<ContactInfo>()
+    val currentHotelContacts: LiveData<ContactInfo>
+        get() = _currentHotelContacts
 
     fun getHotelsPagingAndLoadToAdapter() {
         isLoadingAllowed = false
@@ -43,16 +48,22 @@ class HotelsViewModel(private val repository: IRepository) : ViewModel() {
 
     fun getHotelsGalleryAndLoadToAdapter(hotelId: Int) {
         viewModelScope.launch {
-            if (pictures == null) {
-                pictures = repository.getPicturesByHotelId(hotelId)
+            if (currentHotelPictures == null) {
+                currentHotelPictures = repository.getPicturesByHotelId(hotelId)
             }
-            pictureAdapter.setData(pictures!!)
+            pictureAdapter.setData(currentHotelPictures!!)
         }
     }
 
     fun getHotelById(hotelId: Int) {
         viewModelScope.launch {
             _currentHotel.value = repository.getHotelById(hotelId)
+        }
+    }
+
+    fun getContactInfoByHotelId(hotelId: Int) {
+        viewModelScope.launch {
+            _currentHotelContacts.value = repository.getContactInfoByHotelId(hotelId)
         }
     }
 

@@ -50,11 +50,22 @@ abstract class AppDatabase : RoomDatabase() {
                         )
                     )
                 }
+                hotelDao.insertContactInfo(
+                    ContactInfo(
+                        hotelId = newHotelId,
+                        address = "262 East Railroad St.Painesville, OH 44077",
+                        contacts = "Ofra Torunn Altansarnai: +421992349421|Regena Borghildr Olympias: +421992416352"
+                    )
+                )
             }
         }
     }
 
-    private fun loadPictureToFileSystem(pictureName: String, resourceId: Int, application: Application) {
+    private fun loadPictureToFileSystem(
+        pictureName: String,
+        resourceId: Int,
+        application: Application
+    ) {
         val picture = BitmapFactory.decodeResource(application.resources, resourceId)
         application.applicationContext.openFileOutput(pictureName, Context.MODE_PRIVATE)
             .use {

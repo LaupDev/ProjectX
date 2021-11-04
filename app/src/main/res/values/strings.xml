@@ -12,6 +12,9 @@
     <string name="overview">Overview</string>
     <string name="gallery">Gallery</string>
     <string name="contacts">Contacts</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  HotelDetailsContacts  -->
+    <string name="contact_us">Contact us</string>
+    <string name="or">OR</string>
+    <string name="find_us">Find us</string>
 </resources>
