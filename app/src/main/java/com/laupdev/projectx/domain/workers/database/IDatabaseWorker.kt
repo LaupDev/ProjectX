@@ -12,6 +12,8 @@ interface IDatabaseWorker {
 
     suspend fun getHotelsPaging(fromId: Int, size: Int): List<Hotel>
 
+    suspend fun getHotelById(hotelId: Int): Hotel
+
     suspend fun getPicturesByHotelId(hotelId: Int): List<Picture>
 
 }

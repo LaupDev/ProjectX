@@ -1,6 +1,7 @@
 package com.laupdev.projectx.presentation.hotel
 
 import androidx.lifecycle.*
+import com.laupdev.projectx.data.database.Hotel
 import com.laupdev.projectx.data.database.Picture
 import com.laupdev.projectx.domain.adapter.HotelAdapter
 import com.laupdev.projectx.domain.adapter.PictureAdapter
@@ -18,7 +19,11 @@ class HotelsViewModel(private val repository: IRepository) : ViewModel() {
     val hotelAdapter = HotelAdapter(mutableListOf())
     val pictureAdapter = PictureAdapter(mutableListOf())
 
-    var pictures: List<Picture>? = null
+    private var pictures: List<Picture>? = null
+
+    private val _currentHotel = MutableLiveData<Hotel>()
+    val currentHotel: LiveData<Hotel>
+        get() = _currentHotel
 
     fun getHotelsPagingAndLoadToAdapter() {
         isLoadingAllowed = false
@@ -42,6 +47,12 @@ class HotelsViewModel(private val repository: IRepository) : ViewModel() {
                 pictures = repository.getPicturesByHotelId(hotelId)
             }
             pictureAdapter.setData(pictures!!)
+        }
+    }
+
+    fun getHotelById(hotelId: Int) {
+        viewModelScope.launch {
+            _currentHotel.value = repository.getHotelById(hotelId)
         }
     }
 

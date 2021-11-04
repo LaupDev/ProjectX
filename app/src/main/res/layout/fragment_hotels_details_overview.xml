@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.HotelsDetailsOverviewFragment">
+    tools:context=".presentation.hotel.details.HotelDetailsOverviewFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/main_photo_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/hotel_main_photo" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/hotel_name_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/main_photo_image"
+        tools:text="Hotel 1" />
+
+    <TextView
+        android:id="@+id/hotel_desc_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="center"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/hotel_name_text"
+        tools:text="Fdsssd sdf sd sdsdfsdf sdf sdf sdf ew sdf swdf  we fsdfs dfsd fdf sdfsdf sdf esfd adf asafefskldfhlaskflk sdhfslhsldafkhlk" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

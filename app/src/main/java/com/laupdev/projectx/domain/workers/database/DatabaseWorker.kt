@@ -9,6 +9,7 @@ class DatabaseWorker(private val userDao: UserDao, private val hotelDao: HotelDa
 
     override suspend fun getHotelsPaging(fromId: Int, size: Int) = hotelDao.getHotelsPaging(fromId, size)
 
-    override suspend fun getPicturesByHotelId(hotelId: Int) = hotelDao.getPicturesByHotelId(hotelId)
+    override suspend fun getHotelById(hotelId: Int) = hotelDao.getHotelById(hotelId)
 
+    override suspend fun getPicturesByHotelId(hotelId: Int) = hotelDao.getPicturesByHotelId(hotelId)
 }

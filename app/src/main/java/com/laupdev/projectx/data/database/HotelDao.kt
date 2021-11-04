@@ -11,7 +11,7 @@ interface HotelDao {
     suspend fun getHotelsPaging(fromId: Int, size: Int): List<Hotel>
 
     @Query("SELECT * FROM hotels WHERE id = :id")
-    suspend fun getHotelWithAllInfoById(id: Int): Hotel
+    suspend fun getHotelById(id: Int): Hotel
 
     @Query("SELECT * FROM gallery WHERE hotel_id = :hotelId")
     suspend fun getPicturesByHotelId(hotelId: Int): List<Picture>

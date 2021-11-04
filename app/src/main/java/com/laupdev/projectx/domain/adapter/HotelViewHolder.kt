@@ -8,7 +8,7 @@ import com.laupdev.projectx.presentation.hotel.ui.HotelsListFragmentDirections
 import com.squareup.picasso.Picasso
 import java.io.File
 
-class HotelsListItemViewHolder(private val binding: ItemHotelBinding) : RecyclerView.ViewHolder(binding.root) {
+class HotelViewHolder(private val binding: ItemHotelBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(hotel: Hotel) {
         Picasso.get().load(File(hotel.imagePath)).fit().into(binding.hotelPhoto)

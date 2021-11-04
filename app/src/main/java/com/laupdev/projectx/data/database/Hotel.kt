@@ -12,6 +12,8 @@ data class Hotel(
     val id: Int = 0,
     @ColumnInfo(name = "name")
     val name: String,
+    @ColumnInfo(name = "description")
+    val description: String,
     @ColumnInfo(name = "main_image_path")
     val imagePath: String
 )
