@@ -1,4 +1,4 @@
-package com.laupdev.projectx.domain.viewmodel
+package com.laupdev.projectx.presentation.user
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

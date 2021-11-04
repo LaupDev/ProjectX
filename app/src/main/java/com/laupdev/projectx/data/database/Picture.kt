@@ -3,7 +3,7 @@ package com.laupdev.projectx.data.database
 import androidx.room.*
 
 @Entity(
-    tableName = "Gallery",
+    tableName = "gallery",
     foreignKeys = [
         ForeignKey(
             entity = Hotel::class,
@@ -18,9 +18,9 @@ import androidx.room.*
 )
 data class Picture(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int = 0,
     @ColumnInfo(name = "hotel_id")
-    val hotel_id: Int,
+    val hotel_id: Long,
     @ColumnInfo(name = "image_title")
     val imageTitle: String,
     @ColumnInfo(name = "image_path")

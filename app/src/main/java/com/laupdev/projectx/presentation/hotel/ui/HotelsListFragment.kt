@@ -1,4 +1,4 @@
-package com.laupdev.projectx.presentation.fragment
+package com.laupdev.projectx.presentation.hotel.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.laupdev.projectx.databinding.FragmentHotelsListBinding
-import com.laupdev.projectx.domain.viewmodel.HotelsViewModel
+import com.laupdev.projectx.presentation.hotel.HotelsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -35,6 +35,7 @@ class HotelsListFragment : Fragment() {
 
         recyclerView = binding.hotelsRecyclerView
         recyclerView.adapter = viewModel.hotelAdapter
+        viewModel.getHotelsPagingAndLoadToAdapter()
 
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -42,7 +43,7 @@ class HotelsListFragment : Fragment() {
                 if (!recyclerView.canScrollVertically(1)) {
                     if (viewModel.isLoadingAllowed) {
                         Timber.e("LOAD DATA")
-                        viewModel.getHotelsPaging()
+                        viewModel.getHotelsPagingAndLoadToAdapter()
                     }
                 }
             }

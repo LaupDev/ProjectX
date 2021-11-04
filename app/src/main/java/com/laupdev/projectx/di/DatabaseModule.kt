@@ -1,4 +1,4 @@
-package com.laupdev.projectx.presentation.di
+package com.laupdev.projectx.di
 
 import android.app.Application
 import androidx.room.Room

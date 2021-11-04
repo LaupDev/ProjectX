@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
 
-@Database(entities = [User::class, Hotel::class, Picture::class], version = 1)
+@Database(entities = [User::class, Hotel::class, Picture::class, ContactInfo::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun hotelDao(): HotelDao
@@ -27,21 +27,37 @@ abstract class AppDatabase : RoomDatabase() {
                 )
             )
 
-            val hotelMainPhotoBitmap =
-                BitmapFactory.decodeResource(application.resources, R.drawable.hotel_main_photo)
-            application.applicationContext.openFileOutput("hotel_main_photo", Context.MODE_PRIVATE)
-                .use {
-                    hotelMainPhotoBitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
-                }
+            loadPictureToFileSystem("hotel_main_photo", R.drawable.hotel_main_photo, application)
+            loadPictureToFileSystem("picture_1", R.drawable.picture_1, application)
+            loadPictureToFileSystem("picture_2", R.drawable.picture_2, application)
+            loadPictureToFileSystem("picture_3", R.drawable.picture_3, application)
+            loadPictureToFileSystem("picture_4", R.drawable.picture_4, application)
             for (i in 1..30) {
-
-                hotelDao().insert(
+                val hotelDao = hotelDao()
+                val newHotelId = hotelDao.insert(
                     Hotel(
                         name = "Hotel $i",
                         imagePath = File(application.filesDir, "hotel_main_photo").path
                     )
                 )
+                for (pictureInd in 1..4) {
+                    hotelDao.insertPicture(
+                        Picture(
+                            hotel_id = newHotelId,
+                            imageTitle = "Picture $pictureInd",
+                            imagePath = File(application.filesDir, "picture_$pictureInd").path
+                        )
+                    )
+                }
             }
         }
+    }
+
+    private fun loadPictureToFileSystem(pictureName: String, resourceId: Int, application: Application) {
+        val picture = BitmapFactory.decodeResource(application.resources, resourceId)
+        application.applicationContext.openFileOutput(pictureName, Context.MODE_PRIVATE)
+            .use {
+                picture.compress(Bitmap.CompressFormat.JPEG, 100, it)
+            }
     }
 }

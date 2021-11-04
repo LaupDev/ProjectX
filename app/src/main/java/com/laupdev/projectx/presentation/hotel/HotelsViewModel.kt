@@ -1,8 +1,9 @@
-package com.laupdev.projectx.domain.viewmodel
+package com.laupdev.projectx.presentation.hotel
 
 import androidx.lifecycle.*
-import com.laupdev.projectx.data.database.Hotel
+import com.laupdev.projectx.data.database.Picture
 import com.laupdev.projectx.domain.adapter.HotelAdapter
+import com.laupdev.projectx.domain.adapter.PictureAdapter
 import com.laupdev.projectx.domain.repository.IRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -15,17 +16,11 @@ class HotelsViewModel(private val repository: IRepository) : ViewModel() {
         private set
 
     val hotelAdapter = HotelAdapter(mutableListOf())
+    val pictureAdapter = PictureAdapter(mutableListOf())
 
-    private val _hotelWithAllInfo = MutableLiveData<Hotel>()
-    val hotelWithAllInfo: LiveData<Hotel>
-        get() = _hotelWithAllInfo
+    var pictures: List<Picture>? = null
 
-    init {
-        Timber.i("init: getHotelsPaging()")
-        getHotelsPaging()
-    }
-
-    fun getHotelsPaging() {
+    fun getHotelsPagingAndLoadToAdapter() {
         isLoadingAllowed = false
         viewModelScope.launch {
 
@@ -41,9 +36,12 @@ class HotelsViewModel(private val repository: IRepository) : ViewModel() {
         }
     }
 
-    fun getHotelWithAllInfo(hotelId: Int) {
+    fun getHotelsGalleryAndLoadToAdapter(hotelId: Int) {
         viewModelScope.launch {
-            _hotelWithAllInfo.value = repository.getHotelWithAllInfo(hotelId)
+            if (pictures == null) {
+                pictures = repository.getPicturesByHotelId(hotelId)
+            }
+            pictureAdapter.setData(pictures!!)
         }
     }
 

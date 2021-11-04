@@ -4,7 +4,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.laupdev.projectx.data.database.Hotel
 import com.laupdev.projectx.databinding.ItemHotelBinding
-import com.laupdev.projectx.presentation.fragment.HotelsListFragmentDirections
+import com.laupdev.projectx.presentation.hotel.ui.HotelsListFragmentDirections
 import com.squareup.picasso.Picasso
 import java.io.File
 
@@ -15,7 +15,7 @@ class HotelsListItemViewHolder(private val binding: ItemHotelBinding) : Recycler
         binding.hotelName.text = hotel.name
         binding.root.setOnClickListener {
             val action = HotelsListFragmentDirections.showHotelDetails(hotel.id)
-            itemView.findNavController().navigate(action)
+            binding.root.findNavController().navigate(action)
         }
     }
 }

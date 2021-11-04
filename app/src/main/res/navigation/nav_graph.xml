@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/userAuthFragment"
-        android:name="com.laupdev.projectx.presentation.fragment.UserAuthFragment"
+        android:name="com.laupdev.projectx.presentation.user.ui.UserAuthFragment"
         android:label="fragment_user_auth"
         tools:layout="@layout/fragment_user_auth" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/hotelsListFragment"
-        android:name="com.laupdev.projectx.presentation.fragment.HotelsListFragment"
+        android:name="com.laupdev.projectx.presentation.hotel.ui.HotelsListFragment"
         android:label="fragment_hotels_list"
         tools:layout="@layout/fragment_hotels_list" >
         <action
@@ -25,9 +25,8 @@
     </fragment>
     <fragment
         android:id="@+id/hotelDetailsFragment"
-        android:name="com.laupdev.projectx.presentation.fragment.HotelDetailsFragment"
-        android:label="fragment_hotel_details"
-        tools:layout="@layout/fragment_hotel_details" >
+        android:name="com.laupdev.projectx.presentation.hotel.details.HotelDetailsFragment"
+        android:label="fragment_hotel_details">
         <argument
             android:name="hotel_id"
             app:argType="integer" />

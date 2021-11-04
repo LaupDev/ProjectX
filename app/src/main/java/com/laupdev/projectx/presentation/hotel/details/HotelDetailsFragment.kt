@@ -1,15 +1,16 @@
-package com.laupdev.projectx.presentation.fragment
+package com.laupdev.projectx.presentation.hotel.details
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.tabs.TabLayoutMediator
+import com.laupdev.projectx.R
 import com.laupdev.projectx.databinding.FragmentHotelDetailsBinding
-import com.laupdev.projectx.domain.viewmodel.HotelsViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.laupdev.projectx.domain.adapter.HotelDetailsPageAdapter
 
-const val HOTEL_ID_PARAM = "hotel_id"
+private const val ARG_HOTEL_ID = "hotel_id"
 
 class HotelDetailsFragment : Fragment() {
 
@@ -18,12 +19,10 @@ class HotelDetailsFragment : Fragment() {
     private var _binding: FragmentHotelDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel by viewModel<HotelsViewModel>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            hotelId = it.getInt(HOTEL_ID_PARAM)
+            hotelId = it.getInt(ARG_HOTEL_ID)
         }
     }
 
@@ -38,13 +37,25 @@ class HotelDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getHotelWithAllInfo(hotelId)
+        setupViewPager()
+    }
 
-        viewModel.hotelWithAllInfo.observe(viewLifecycleOwner) {
-            it?.let {
-                binding.text.text = it.name
+    private fun setupViewPager() {
+        binding.viewPager.isUserInputEnabled = false
+        binding.viewPager.adapter = HotelDetailsPageAdapter(hotelId,this)
+        TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
+            when (position) {
+                0 -> {
+                    tab.text = getString(R.string.overview)
+                }
+                1 -> {
+                    tab.text = getString(R.string.gallery)
+                }
+                2 -> {
+                    tab.text = getString(R.string.contacts)
+                }
             }
-        }
+        }.attach()
     }
 
     override fun onDestroyView() {
