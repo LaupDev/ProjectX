@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.hotel.ui.HotelsListFragment">
+    tools:context=".presentation.ui.hotel.list.HotelsListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/hotels_recycler_view"

@@ -1,4 +1,4 @@
-package com.laupdev.projectx.presentation.hotel.ui
+package com.laupdev.projectx.presentation.ui.hotel.list
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,13 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.laupdev.projectx.databinding.FragmentHotelsListBinding
-import com.laupdev.projectx.presentation.hotel.HotelsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class HotelsListFragment : Fragment() {
 
-    private val viewModel by viewModel<HotelsViewModel>()
+    private val viewModel by viewModel<HotelsListViewModel>()
 
     private var _binding: FragmentHotelsListBinding? = null
     private val binding get() = _binding!!

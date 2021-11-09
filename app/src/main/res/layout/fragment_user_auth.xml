@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="80dp"
-    tools:context=".presentation.user.ui.UserAuthFragment">
+    tools:context=".presentation.ui.user.UserAuthFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

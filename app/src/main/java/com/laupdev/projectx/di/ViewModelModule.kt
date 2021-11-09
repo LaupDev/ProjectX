@@ -1,13 +1,15 @@
 package com.laupdev.projectx.di
 
-import com.laupdev.projectx.presentation.hotel.HotelsViewModel
-import com.laupdev.projectx.presentation.user.UserViewModel
+import com.laupdev.projectx.presentation.ui.hotel.details.HotelDetailsViewModel
+import com.laupdev.projectx.presentation.ui.hotel.list.HotelsListViewModel
+import com.laupdev.projectx.presentation.ui.user.UserViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel { UserViewModel(get()) }
-    viewModel { HotelsViewModel(get()) }
+    viewModel { HotelsListViewModel(get()) }
+    viewModel { HotelDetailsViewModel(get()) }
 }
 
 

@@ -1,4 +1,4 @@
-package com.laupdev.projectx.presentation.user
+package com.laupdev.projectx.presentation.ui.user
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
