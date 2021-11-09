@@ -1,4 +1,4 @@
-package com.laupdev.projectx.domain.adapter
+package com.laupdev.projectx.presentation.ui.hotel.list.adapter
 
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView

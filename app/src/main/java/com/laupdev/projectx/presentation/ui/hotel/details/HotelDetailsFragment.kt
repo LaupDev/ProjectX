@@ -50,26 +50,7 @@ class HotelDetailsFragment : Fragment() {
         binding.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 tab?.let {
-                    scope.launch {
-                        Timber.d(tab.position.toString())
-                        when (tab.position) {
-                            0 -> {
-                                binding.pageView.addView(HotelDetailsOverviewView(requireContext(), viewModel.getHotelById()))
-                            }
-                            1 -> {
-                                Timber.d("GALLERY")
-                                binding.pageView.addView(
-                                    HotelDetailsGalleryView(
-                                        requireContext(),
-                                        viewModel.getHotelsGalleryAndLoadToAdapter()
-                                    )
-                                )
-                            }
-                            2 -> {
-                            }
-                            else -> { }
-                        }
-                    }
+                    binding.pageView.addView(viewModel.getPage(it.position, requireContext()))
                 }
             }
 

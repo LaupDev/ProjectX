@@ -1,4 +1,4 @@
-package com.laupdev.projectx.domain.adapter
+package com.laupdev.projectx.presentation.ui.hotel.details.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.laupdev.projectx.data.database.Picture

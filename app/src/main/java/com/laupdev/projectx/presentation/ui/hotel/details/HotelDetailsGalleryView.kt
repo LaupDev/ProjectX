@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.laupdev.projectx.databinding.ViewHotelDetailsGalleryBinding
-import com.laupdev.projectx.domain.adapter.PictureAdapter
+import com.laupdev.projectx.presentation.ui.hotel.details.adapter.PictureAdapter
 
 class HotelDetailsGalleryView(context: Context) : ConstraintLayout(context) {
 

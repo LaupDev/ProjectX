@@ -1,11 +1,7 @@
 package com.laupdev.projectx.presentation.ui.hotel.list
 
 import androidx.lifecycle.*
-import com.laupdev.projectx.data.database.ContactInfo
-import com.laupdev.projectx.data.database.Hotel
-import com.laupdev.projectx.data.database.Picture
-import com.laupdev.projectx.domain.adapter.HotelAdapter
-import com.laupdev.projectx.domain.adapter.PictureAdapter
+import com.laupdev.projectx.presentation.ui.hotel.list.adapter.HotelAdapter
 import com.laupdev.projectx.domain.repository.IRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
