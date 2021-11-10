@@ -3,12 +3,17 @@
 
     <string name="log_out">Log out</string>
 
-    <!--  UserAuthFragment  -->
+    <!--  User Auth  -->
     <string name="welcome">Welcome</string>
-    <string name="login_label">Login</string>
+    <string name="email_label">Email address</string>
     <string name="password_label">Password</string>
     <string name="log_in">Log in</string>
     <string name="wrong_data">Wrong login or password</string>
+    <string name="do_not_have_account"><u>I don\'t have an account</u></string>
+    <string name="sign_up">Sign Up</string>
+    <string name="create_account">Create Account</string>
+    <string name="registration_failed">Registration failed</string>
+    <string name="authentication_failed">Authentication failed</string>
 
     <!--  HotelDetailsFragment  -->
     <string name="overview">Overview</string>

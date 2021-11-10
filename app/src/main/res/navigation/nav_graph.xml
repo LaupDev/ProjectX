@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/userAuthFragment">
+    app:startDestination="@id/startFragment">
 
     <fragment
         android:id="@+id/userAuthFragment"
@@ -11,8 +11,8 @@
         android:label="fragment_user_auth"
         tools:layout="@layout/fragment_user_auth" >
         <action
-            android:id="@+id/goToHotelsList"
-            app:destination="@id/hotelsListFragment" />
+            android:id="@+id/go_to_registration"
+            app:destination="@id/userRegistrationFragment" />
     </fragment>
     <fragment
         android:id="@+id/hotelsListFragment"
@@ -20,7 +20,7 @@
         android:label="fragment_hotels_list"
         tools:layout="@layout/fragment_hotels_list" >
         <action
-            android:id="@+id/showHotelDetails"
+            android:id="@+id/go_to_hotelDetailsFragment"
             app:destination="@id/hotelDetailsFragment" />
     </fragment>
     <fragment
@@ -31,4 +31,18 @@
             android:name="hotel_id"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.laupdev.projectx.presentation.ui.start.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" />
+    <fragment
+        android:id="@+id/userRegistrationFragment"
+        android:name="com.laupdev.projectx.presentation.ui.user.registration.UserRegistrationFragment"
+        android:label="fragment_user_registration"
+        tools:layout="@layout/fragment_user_registration" />
+    <action
+        android:id="@+id/go_to_HotelsListFragment"
+        app:destination="@id/hotelsListFragment" />
+    <action android:id="@+id/go_to_auth" app:destination="@id/userAuthFragment" />
 </navigation>

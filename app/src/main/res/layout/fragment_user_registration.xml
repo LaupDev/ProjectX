@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="80dp"
-    tools:context=".presentation.ui.user.UserAuthFragment">
+    tools:context=".presentation.ui.user.registration.UserRegistrationFragment">
 
     <TextView
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:fontFamily="@font/roboto_medium"
         android:gravity="center"
-        android:text="@string/welcome"
+        android:text="@string/create_account"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@id/auth_input_group" />
@@ -25,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginBottom="100dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -41,7 +41,7 @@
                 android:id="@+id/email_input_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,27 +63,15 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/registration_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/do_not_have_account"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/auth_input_group" />
-
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/log_in_btn"
+        android:id="@+id/sign_up_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="70dp"
-        android:text="@string/log_in"
-        app:layout_constraintTop_toBottomOf="@id/registration_btn" />
+        android:text="@string/sign_up"
+        app:layout_constraintTop_toBottomOf="@id/auth_input_group" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,7 @@ class HotelViewHolder(private val binding: ItemHotelBinding) : RecyclerView.View
         Picasso.get().load(File(hotel.imagePath)).fit().into(binding.hotelPhoto)
         binding.hotelName.text = hotel.name
         binding.root.setOnClickListener {
-            val action = HotelsListFragmentDirections.showHotelDetails(hotel.id)
+            val action = HotelsListFragmentDirections.goToHotelDetailsFragment(hotel.id)
             binding.root.findNavController().navigate(action)
         }
     }

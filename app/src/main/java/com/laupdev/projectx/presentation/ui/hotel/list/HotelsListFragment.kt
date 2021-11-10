@@ -6,7 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.laupdev.projectx.R
 import com.laupdev.projectx.databinding.FragmentHotelsListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,6 +25,8 @@ class HotelsListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,6 +38,7 @@ class HotelsListFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        auth = Firebase.auth
 
         recyclerView = binding.hotelsRecyclerView
         recyclerView.adapter = viewModel.hotelAdapter
@@ -52,7 +59,8 @@ class HotelsListFragment : Fragment() {
         binding.topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.log_out -> {
-                    // TODO: 10.11.2021 Implement Log Out
+                    auth.signOut()
+                    findNavController().navigate(R.id.go_to_auth)
                     true
                 }
                 else -> false
