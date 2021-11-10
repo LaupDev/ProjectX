@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.laupdev.projectx.R
 import com.laupdev.projectx.databinding.FragmentHotelsListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -47,6 +48,16 @@ class HotelsListFragment : Fragment() {
                 }
             }
         })
+
+        binding.topAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.log_out -> {
+                    // TODO: 10.11.2021 Implement Log Out
+                    true
+                }
+                else -> false
+            }
+        }
 
     }
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1097569942572",
+    "project_id": "project-x-laup",
+    "storage_bucket": "project-x-laup.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097569942572:android:cd2f0e674ef3dd5fe66589",
+        "android_client_info": {
+          "package_name": "com.laupdev.projectx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1097569942572-7sju2hd78enktqohv0t8aujak561fsph.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3idqH6nd8LFMPgIrGW8D085m5_Z7HdrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1097569942572-7sju2hd78enktqohv0t8aujak561fsph.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

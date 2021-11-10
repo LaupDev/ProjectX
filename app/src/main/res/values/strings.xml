@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Project X</string>
 
+    <string name="log_out">Log out</string>
+
     <!--  UserAuthFragment  -->
     <string name="welcome">Welcome</string>
     <string name="login_label">Login</string>
@@ -15,6 +17,8 @@
 
     <!--  HotelDetailsContacts  -->
     <string name="contact_us">Contact us</string>
-    <string name="or">OR</string>
     <string name="find_us">Find us</string>
+    <string name="contact_format">%1$s\n%2$s</string>
+    <string name="order">Order</string>
+    <string name="successful_order">Successfully ordered</string>
 </resources>

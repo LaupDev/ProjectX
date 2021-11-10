@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/drawable/ic_login_24.xml" value="0.3416666666666667" />
         <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/layout/fragment_hotel_details.xml" value="0.3875" />
         <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/layout/fragment_hotel_details_contacts.xml" value="0.33" />
         <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/layout/fragment_hotel_details_gallery.xml" value="0.21927083333333333" />
@@ -10,10 +11,13 @@
         <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/layout/fragment_hotels_list.xml" value="0.3875" />
         <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/layout/fragment_user_auth.xml" value="0.33" />
         <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/layout/item_hotel.xml" value="0.3875" />
+        <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/layout/item_hotel_contact.xml" value="0.3645833333333333" />
         <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/layout/item_picture.xml" value="0.3875" />
         <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/layout/sample_hotel_details_gallery_view.xml" value="0.3875" />
+        <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/layout/view_hotel_details_contacts.xml" value="0.3645833333333333" />
         <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/layout/view_hotel_details_gallery.xml" value="0.21927083333333333" />
         <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/layout/view_hotels_details_overview.xml" value="0.21927083333333333" />
+        <entry key="..\:/Programming/Android_Projects/ProjectX/app/src/main/res/menu/top_app_bar.xml" value="0.3875" />
         <entry key="..\:/Projects/ProjectX/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Projects/ProjectX/app/src/main/res/layout/fragment_user_auth.xml" value="0.36666666666666664" />
       </map>

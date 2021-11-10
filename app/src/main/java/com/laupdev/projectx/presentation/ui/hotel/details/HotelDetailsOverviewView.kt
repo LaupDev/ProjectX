@@ -12,6 +12,11 @@ import java.io.File
 
 class HotelDetailsOverviewView(context: Context) : ConstraintLayout(context) {
 
+    constructor(context: Context, hotel: LiveData<Hotel>) : this(context) {
+        this.hotel = hotel
+        this.hotel.observeForever(observer)
+    }
+
     private lateinit var hotel: LiveData<Hotel>
 
     private var binding: ViewHotelDetailsOverviewBinding = ViewHotelDetailsOverviewBinding.inflate(
@@ -20,17 +25,12 @@ class HotelDetailsOverviewView(context: Context) : ConstraintLayout(context) {
         true
     )
 
-    private val observer = Observer<Hotel>{
+    private val observer = Observer<Hotel> {
         it?.let {
             Picasso.get().load(File(it.imagePath)).into(binding.mainPhotoImage)
             binding.hotelNameText.text = it.name
             binding.hotelDescText.text = it.description
         }
-    }
-
-    constructor(context: Context, hotel: LiveData<Hotel>) : this(context) {
-        this.hotel = hotel
-        this.hotel.observeForever(observer)
     }
 
     override fun onDetachedFromWindow() {

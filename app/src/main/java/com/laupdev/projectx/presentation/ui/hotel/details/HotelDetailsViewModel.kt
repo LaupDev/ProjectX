@@ -2,7 +2,6 @@ package com.laupdev.projectx.presentation.ui.hotel.details
 
 import android.content.Context
 import android.view.View
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,7 +11,6 @@ import com.laupdev.projectx.data.database.Picture
 import com.laupdev.projectx.presentation.ui.hotel.details.adapter.PictureAdapter
 import com.laupdev.projectx.domain.repository.IRepository
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class HotelDetailsViewModel(private val repository: IRepository) : ViewModel() {
 
@@ -20,51 +18,53 @@ class HotelDetailsViewModel(private val repository: IRepository) : ViewModel() {
 
     private lateinit var currentHotelPictures: List<Picture>
 
-    private val _currentHotel = MutableLiveData<Hotel>()
-    val currentHotel: LiveData<Hotel>
-        get() = _currentHotel
+    private var pictureAdapter = PictureAdapter(mutableListOf())
 
-    private val _currentHotelContacts = MutableLiveData<ContactInfo>()
-    val currentHotelContacts: LiveData<ContactInfo>
-        get() = _currentHotelContacts
+    private val currentHotel = MutableLiveData<Hotel>()
 
-    suspend fun getHotelsGalleryAndLoadToAdapter(): PictureAdapter {
-        currentHotelPictures = repository.getPicturesByHotelId(hotelId)
-        return PictureAdapter(currentHotelPictures)
-    }
-
-    fun getHotelById() {
-        viewModelScope.launch {
-            _currentHotel.value = repository.getHotelById(hotelId)
-        }
-    }
-
-    fun getContactInfoByHotelId() {
-        viewModelScope.launch {
-            _currentHotelContacts.value = repository.getContactInfoByHotelId(hotelId)
-        }
-    }
+    private val currentHotelContacts = MutableLiveData<ContactInfo>()
 
     fun getPage(position: Int, context: Context): View {
-        when (position) {
+        return when (position) {
             TabPosition.OVERVIEW.position -> {
-                getHotelById()
-                return HotelDetailsOverviewView(context, currentHotel)
+                loadHotel()
+                HotelDetailsOverviewView(context, currentHotel)
             }
             TabPosition.GALLERY.position -> {
-//                binding.pageView.addView(
-//                    HotelDetailsGalleryView(
-//                        requireContext(),
-//                        viewModel.getHotelsGalleryAndLoadToAdapter()
-//                    )
-//                )
-                return HotelDetailsOverviewView(context, currentHotel)
+                loadHotelPictures()
+                HotelDetailsGalleryView(context, pictureAdapter)
             }
             TabPosition.CONTACTS.position -> {
-                return HotelDetailsOverviewView(context, currentHotel)
+                loadHotelContactInfo()
+                HotelDetailsContactsView(context, currentHotelContacts)
             }
             else -> {
-                return View(context)
+                View(context)
+            }
+        }
+    }
+
+    private fun loadHotelPictures() {
+        viewModelScope.launch {
+            if (!this@HotelDetailsViewModel::currentHotelPictures.isInitialized) {
+                currentHotelPictures = repository.getPicturesByHotelId(hotelId)
+                pictureAdapter.setData(currentHotelPictures)
+            }
+        }
+    }
+
+    private fun loadHotel() {
+        viewModelScope.launch {
+            if (currentHotel.value == null) {
+                currentHotel.value = repository.getHotelById(hotelId)
+            }
+        }
+    }
+
+    private fun loadHotelContactInfo() {
+        viewModelScope.launch {
+            if (currentHotelContacts.value == null) {
+                currentHotelContacts.value = repository.getContactInfoByHotelId(hotelId)
             }
         }
     }
