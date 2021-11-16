@@ -10,6 +10,7 @@ import com.laupdev.projectx.data.database.Hotel
 import com.laupdev.projectx.data.database.Picture
 import com.laupdev.projectx.presentation.ui.hotel.details.adapter.PictureAdapter
 import com.laupdev.projectx.domain.repository.IRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class HotelDetailsViewModel(private val repository: IRepository) : ViewModel() {
@@ -66,6 +67,12 @@ class HotelDetailsViewModel(private val repository: IRepository) : ViewModel() {
             if (currentHotelContacts.value == null) {
                 currentHotelContacts.value = repository.getContactInfoByHotelId(hotelId)
             }
+        }
+    }
+
+    fun signOut() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.signOut()
         }
     }
 

@@ -14,9 +14,13 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.laupdev.projectx.R
 import com.laupdev.projectx.databinding.FragmentUserRegistrationBinding
+import com.laupdev.projectx.presentation.ui.user.UserViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class UserRegistrationFragment : Fragment() {
+
+    private val viewModel by viewModel<UserViewModel>()
 
     private var _binding: FragmentUserRegistrationBinding? = null
     private val binding get() = _binding!!
@@ -46,6 +50,7 @@ class UserRegistrationFragment : Fragment() {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(requireActivity()) { task ->
                         if (task.isSuccessful) {
+                            viewModel.authenticateUser(email, password)
                             val action = UserRegistrationFragmentDirections.goToHotelsListFragment()
                             findNavController().navigate(action)
                         } else {

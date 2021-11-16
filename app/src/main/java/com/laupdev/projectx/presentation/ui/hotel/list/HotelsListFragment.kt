@@ -1,6 +1,5 @@
 package com.laupdev.projectx.presentation.ui.hotel.list
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,7 +34,6 @@ class HotelsListFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = Firebase.auth
@@ -59,6 +57,7 @@ class HotelsListFragment : Fragment() {
         binding.topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.log_out -> {
+                    viewModel.signOut()
                     auth.signOut()
                     findNavController().navigate(R.id.go_to_auth)
                     true

@@ -6,29 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.laupdev.projectx.R
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class StartFragment : Fragment() {
 
-    private lateinit var auth: FirebaseAuth
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        auth = Firebase.auth
-    }
+    private val viewModel by viewModel<StartViewModel>()
 
     override fun onStart() {
         super.onStart()
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            val action = StartFragmentDirections.goToHotelsListFragment()
-            findNavController().navigate(action)
-        } else {
-            val action = StartFragmentDirections.goToAuth()
-            findNavController().navigate(action)
+        viewModel.isUserLoggedIn.observe(viewLifecycleOwner) {
+            if (it) {
+                val action = StartFragmentDirections.goToHotelsListFragment()
+                findNavController().navigate(action)
+            } else {
+                val action = StartFragmentDirections.goToAuth()
+                findNavController().navigate(action)
+            }
         }
     }
 
@@ -38,5 +32,9 @@ class StartFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_start, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 }

@@ -1,12 +1,10 @@
 package com.laupdev.projectx.domain.repository
 
-import com.laupdev.projectx.data.database.ContactInfo
-import com.laupdev.projectx.data.database.Hotel
 import com.laupdev.projectx.domain.workers.database.IDatabaseWorker
 
 class Repository(private val databaseWorker: IDatabaseWorker): IRepository {
 
-    override suspend fun getUserByUsername(username: String) = databaseWorker.getUserByUsername(username)
+    override suspend fun getLoggedInUser() = databaseWorker.getLoggedInUser()
 
     override suspend fun getUserByEmail(email: String) = databaseWorker.getUserByEmail(email)
 
@@ -17,4 +15,10 @@ class Repository(private val databaseWorker: IDatabaseWorker): IRepository {
     override suspend fun getPicturesByHotelId(hotelId: Int) = databaseWorker.getPicturesByHotelId(hotelId)
 
     override suspend fun getContactInfoByHotelId(hotelId: Int) = databaseWorker.getContactInfoByHotelId(hotelId)
+
+    override suspend fun handleUserAuthData(email: String, password: String) = databaseWorker.handleUserAuthData(email, password)
+
+    override suspend fun updateUserIsLoggedIn(userId: Int, isLoggedIn: Int) = databaseWorker.updateUserIsLoggedIn(userId, isLoggedIn)
+
+    override suspend fun signOut() = databaseWorker.signOut()
 }

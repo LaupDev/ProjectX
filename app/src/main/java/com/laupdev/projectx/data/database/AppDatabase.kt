@@ -17,17 +17,14 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun hotelDao(): HotelDao
 
+
     fun populateDatabase(application: Application) {
         CoroutineScope(Dispatchers.IO).launch {
-            userDao().insert(
-                User(
-                    username = "Admin",
-                    email = "Admin@gmail.com",
-                    password = "root"
-                )
+            loadPictureToFileSystem(
+                "hotel_main_photo",
+                R.drawable.hotel_main_photo,
+                application
             )
-
-            loadPictureToFileSystem("hotel_main_photo", R.drawable.hotel_main_photo, application)
             loadPictureToFileSystem("picture_1", R.drawable.picture_1, application)
             loadPictureToFileSystem("picture_2", R.drawable.picture_2, application)
             loadPictureToFileSystem("picture_3", R.drawable.picture_3, application)

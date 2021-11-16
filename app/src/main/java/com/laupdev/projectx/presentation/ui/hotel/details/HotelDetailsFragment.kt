@@ -55,6 +55,7 @@ class HotelDetailsFragment : Fragment() {
         binding.topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.log_out -> {
+                    viewModel.signOut()
                     auth.signOut()
                     findNavController().navigate(R.id.go_to_auth)
                     true
