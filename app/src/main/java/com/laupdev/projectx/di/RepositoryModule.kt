@@ -1,18 +1,16 @@
 package com.laupdev.projectx.di
 
-import com.laupdev.projectx.data.database.HotelDao
-import com.laupdev.projectx.data.database.UserDao
 import com.laupdev.projectx.domain.repository.IRepository
 import com.laupdev.projectx.domain.repository.Repository
-import com.laupdev.projectx.domain.workers.database.DatabaseWorker
 import com.laupdev.projectx.domain.workers.database.IDatabaseWorker
+import com.laupdev.projectx.domain.workers.firestore.IFirestoreWorker
 import org.koin.dsl.module
 
 val repositoryModule = module {
 
-    fun provideRepository(databaseWorker: IDatabaseWorker): IRepository {
-        return Repository(databaseWorker)
+    fun provideRepository(databaseWorker: IDatabaseWorker, firestoreWorker: IFirestoreWorker): IRepository {
+        return Repository(databaseWorker, firestoreWorker)
     }
 
-    single { provideRepository(get()) }
+    single { provideRepository(get(), get()) }
 }

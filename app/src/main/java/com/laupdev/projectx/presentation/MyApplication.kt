@@ -1,12 +1,16 @@
 package com.laupdev.projectx.presentation
 
 import android.app.Application
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.laupdev.projectx.BuildConfig
 import com.laupdev.projectx.data.database.AppDatabase
 import com.laupdev.projectx.di.databaseModule
 import com.laupdev.projectx.di.repositoryModule
 import com.laupdev.projectx.di.viewModelModule
 import com.laupdev.projectx.di.workerModule
+import com.laupdev.projectx.domain.repository.IRepository
+import com.laupdev.projectx.domain.repository.Repository
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -14,6 +18,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import timber.log.Timber
 
+@Suppress("unused")
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()

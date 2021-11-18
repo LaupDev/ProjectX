@@ -1,8 +1,12 @@
 package com.laupdev.projectx.domain.repository
 
 import com.laupdev.projectx.domain.workers.database.IDatabaseWorker
+import com.laupdev.projectx.domain.workers.firestore.IFirestoreWorker
 
-class Repository(private val databaseWorker: IDatabaseWorker): IRepository {
+class Repository(
+    private val databaseWorker: IDatabaseWorker,
+    private val firestoreWorker: IFirestoreWorker
+    ): IRepository {
 
     override suspend fun getLoggedInUser() = databaseWorker.getLoggedInUser()
 
@@ -21,4 +25,6 @@ class Repository(private val databaseWorker: IDatabaseWorker): IRepository {
     override suspend fun updateUserIsLoggedIn(userId: Int, isLoggedIn: Int) = databaseWorker.updateUserIsLoggedIn(userId, isLoggedIn)
 
     override suspend fun signOut() = databaseWorker.signOut()
+
+    override fun populateFirestore() = firestoreWorker.populateFirestore()
 }

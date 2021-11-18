@@ -15,4 +15,6 @@ interface IRepository {
     suspend fun handleUserAuthData(email: String, password: String)
     suspend fun updateUserIsLoggedIn(userId: Int, isLoggedIn: Int)
     suspend fun signOut()
+
+    fun populateFirestore()
 }

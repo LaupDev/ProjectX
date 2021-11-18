@@ -50,7 +50,7 @@ class UserRegistrationFragment : Fragment() {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(requireActivity()) { task ->
                         if (task.isSuccessful) {
-                            viewModel.authenticateUser(email, password)
+                            viewModel.handleUserAuthData(email, password)
                             val action = UserRegistrationFragmentDirections.goToHotelsListFragment()
                             findNavController().navigate(action)
                         } else {

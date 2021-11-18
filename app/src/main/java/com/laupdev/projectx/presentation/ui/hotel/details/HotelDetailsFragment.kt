@@ -30,8 +30,6 @@ class HotelDetailsFragment : Fragment() {
     private var _binding: FragmentHotelDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private val scope = CoroutineScope(Dispatchers.Main)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {

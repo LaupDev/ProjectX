@@ -4,6 +4,8 @@ import com.laupdev.projectx.data.database.HotelDao
 import com.laupdev.projectx.data.database.UserDao
 import com.laupdev.projectx.domain.workers.database.DatabaseWorker
 import com.laupdev.projectx.domain.workers.database.IDatabaseWorker
+import com.laupdev.projectx.domain.workers.firestore.FirestoreWorker
+import com.laupdev.projectx.domain.workers.firestore.IFirestoreWorker
 import org.koin.dsl.module
 
 val workerModule = module {
@@ -11,5 +13,10 @@ val workerModule = module {
         return DatabaseWorker(userDao, hotelDao)
     }
 
+    fun provideFirestoreWorker(): IFirestoreWorker {
+        return FirestoreWorker()
+    }
+
     single { provideDatabaseWorker(get(), get()) }
+    single { provideFirestoreWorker() }
 }

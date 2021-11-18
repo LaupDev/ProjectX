@@ -7,7 +7,7 @@ import kotlinx.coroutines.launch
 
 class UserViewModel(private val repository: IRepository) : ViewModel() {
 
-    fun authenticateUser(email: String, password: String) {
+    fun handleUserAuthData(email: String, password: String) {
         viewModelScope.launch {
             repository.handleUserAuthData(email, password)
         }

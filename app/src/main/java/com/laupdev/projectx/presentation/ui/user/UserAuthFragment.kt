@@ -45,7 +45,7 @@ class UserAuthFragment : Fragment() {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(requireActivity()) { task ->
                         if (task.isSuccessful) {
-                            viewModel.authenticateUser(email, password)
+                            viewModel.handleUserAuthData(email, password)
                             findNavController().navigate(R.id.go_to_HotelsListFragment)
                         } else {
                             Snackbar.make(
