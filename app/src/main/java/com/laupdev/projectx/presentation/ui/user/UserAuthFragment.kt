@@ -1,10 +1,12 @@
 package com.laupdev.projectx.presentation.ui.user
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
@@ -38,23 +40,24 @@ class UserAuthFragment : Fragment() {
 
         auth = Firebase.auth
 
+        viewModel.isLoggedIn.observe(viewLifecycleOwner) {
+            if (it) {
+                findNavController().navigate(R.id.go_to_HotelsListFragment)
+            } else {
+                Snackbar.make(
+                    view,
+                    R.string.authentication_failed,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+        }
+
         binding.logInBtn.setOnClickListener {
             if (isFieldsValid()) {
                 val email = binding.emailInputEditText.text.toString()
                 val password = binding.passwordInputEditText.text.toString()
-                auth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(requireActivity()) { task ->
-                        if (task.isSuccessful) {
-                            viewModel.handleUserAuthData(email, password)
-                            findNavController().navigate(R.id.go_to_HotelsListFragment)
-                        } else {
-                            Snackbar.make(
-                                view,
-                                R.string.authentication_failed,
-                                Snackbar.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
+                viewModel.signIn(email, password)
+                hideKeyboard()
             }
         }
 
@@ -84,6 +87,10 @@ class UserAuthFragment : Fragment() {
             inputLayout.isErrorEnabled = false
             true
         }
+    }
+
+    private fun hideKeyboard() {
+        (requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 
     override fun onDestroyView() {
