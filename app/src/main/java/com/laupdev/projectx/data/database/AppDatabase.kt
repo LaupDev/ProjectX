@@ -31,7 +31,7 @@ abstract class AppDatabase : RoomDatabase() {
             loadPictureToFileSystem("picture_4", R.drawable.picture_4, application)
             for (i in 1..30) {
                 val hotelDao = hotelDao()
-                val newHotelId = hotelDao.insert(
+                val newHotelId = hotelDao.insertHotel(
                     Hotel(
                         name = "Hotel $i",
                         imagePath = File(application.filesDir, "hotel_main_photo").path,

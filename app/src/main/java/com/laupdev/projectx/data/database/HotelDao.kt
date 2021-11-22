@@ -8,7 +8,7 @@ import androidx.room.Query
 interface HotelDao {
 
     @Query("SELECT * FROM hotels WHERE id > :fromId LIMIT :size")
-    suspend fun getHotelsPaging(fromId: Int, size: Int): List<Hotel>
+    suspend fun getHotelsPaging(fromId: Long, size: Long): List<Hotel>
 
     @Query("SELECT * FROM hotels WHERE id = :id")
     suspend fun getHotelById(id: Int): Hotel
@@ -20,7 +20,7 @@ interface HotelDao {
     suspend fun getContactsByHotelId(hotelId: Int): ContactInfo
 
     @Insert
-    suspend fun insert(hotel: Hotel): Long
+    suspend fun insertHotel(hotel: Hotel): Long
 
     @Insert
     suspend fun insertPicture(picture: Picture)

@@ -1,15 +1,36 @@
 package com.laupdev.projectx.domain.workers.firestore
 
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.tasks.await
 import timber.log.Timber
 
 class FirestoreWorker : IFirestoreWorker {
     private val firestore = Firebase.firestore
 
+    override suspend fun getHotelsUsingPaging(fromId: Long, limit: Long): QuerySnapshot? {
+        var result: QuerySnapshot? = null
+        firestore.collection("hotels")
+            .orderBy("id")
+            .startAfter(fromId)
+            .limit(limit)
+            .get()
+            .addOnCompleteListener {
+                result = if (it.isSuccessful) {
+                    it.result
+                } else {
+                    null
+                }
+            }
+            .await()
+        return result
+    }
+
     override fun populateFirestore() {
-        for (i in 0..15) {
+        for (i in 1..15) {
             val hotelData = hashMapOf(
+                "id" to i,
                 "name" to "Hotel $i",
                 "description" to "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 "main_image_path" to "https://foto.hrsstatic.com/fotos/0/2/1280/1280/100/FFFFFF/http%3A%2F%2Ffoto-origin.hrsstatic.com%2Ffoto%2F0%2F0%2F7%2F9%2F007970%2F007970_ha_28855911.jpg/rRuicPT0oQIyfSaLs35T2g%3D%3D/382%2C500/6/ANTALYA_HOTEL_RESORT_AND_SPA-Antalya-Hotel_outdoor_area-8-7970.jpg",

@@ -33,6 +33,9 @@ class MyApplication : Application() {
                 databaseModule
             ))
         }
+        val repository: IRepository by inject()
+        repository.populateFirestore()
+
         val database: AppDatabase by inject()
 
         if (!databaseList().any { it == "project_x_database" }) {

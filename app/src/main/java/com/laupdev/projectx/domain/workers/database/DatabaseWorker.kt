@@ -8,13 +8,27 @@ class DatabaseWorker(private val userDao: UserDao, private val hotelDao: HotelDa
 
     override suspend fun getUserByEmail(email: String) = userDao.getUserByEmail(email)
 
-    override suspend fun getHotelsPaging(fromId: Int, size: Int) = hotelDao.getHotelsPaging(fromId, size)
+    override suspend fun getHotelsPaging(fromId: Long, size: Long) = hotelDao.getHotelsPaging(fromId, size)
 
     override suspend fun getHotelById(hotelId: Int) = hotelDao.getHotelById(hotelId)
 
     override suspend fun getPicturesByHotelId(hotelId: Int) = hotelDao.getPicturesByHotelId(hotelId)
 
     override suspend fun getContactInfoByHotelId(hotelId: Int) = hotelDao.getContactsByHotelId(hotelId)
+
+    override suspend fun insertHotel(hotel: Hotel): Long {
+        return hotelDao.insertHotel(hotel)
+    }
+
+    override suspend fun insertContactInfo(contactInfo: ContactInfo) {
+        hotelDao.insertContactInfo(contactInfo)
+    }
+
+    override suspend fun insertPictures(pictures: List<Picture>) {
+        pictures.forEach { picture ->
+            hotelDao.insertPicture(picture)
+        }
+    }
 
     override suspend fun handleUserAuthData(email: String, password: String) {
         val user = userDao.getUserByEmail(email)
