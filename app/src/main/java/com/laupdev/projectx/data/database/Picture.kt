@@ -18,7 +18,7 @@ import androidx.room.*
 )
 data class Picture(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Long = 0,
     @ColumnInfo(name = "hotel_id")
     val hotel_id: Long,
     @ColumnInfo(name = "image_title")

@@ -1,4 +1,4 @@
-package com.laupdev.projectx.presentation.ui.hotel.details
+package com.laupdev.projectx.presentation.ui.hotel.overview
 
 import android.content.Context
 import android.view.LayoutInflater

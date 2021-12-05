@@ -1,4 +1,4 @@
-package com.laupdev.projectx.presentation.ui.hotel.list.adapter
+package com.laupdev.projectx.presentation.ui.hotels_list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

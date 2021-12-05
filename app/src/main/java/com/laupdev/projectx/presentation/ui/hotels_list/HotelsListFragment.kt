@@ -1,4 +1,4 @@
-package com.laupdev.projectx.presentation.ui.hotel.list
+package com.laupdev.projectx.presentation.ui.hotels_list
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

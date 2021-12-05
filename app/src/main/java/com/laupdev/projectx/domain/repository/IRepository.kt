@@ -9,9 +9,9 @@ interface IRepository {
     suspend fun getLoggedInUser(): User?
     suspend fun getUserByEmail(email: String): User?
     suspend fun getHotelsPaging(fromId: Long, limit: Long): List<Hotel>
-    suspend fun getHotelById(hotelId: Int): Hotel
-    suspend fun getPicturesByHotelId(hotelId: Int): List<Picture>
-    suspend fun getContactInfoByHotelId(hotelId: Int): ContactInfo
+    suspend fun getHotelById(hotelId: Long): Hotel
+    suspend fun getPicturesByHotelId(hotelId: Long): List<Picture>
+    suspend fun getContactInfoByHotelId(hotelId: Long): ContactInfo
     suspend fun handleUserAuthData(email: String, password: String)
     suspend fun updateUserIsLoggedIn(userId: Int, isLoggedIn: Int)
     suspend fun signOut()

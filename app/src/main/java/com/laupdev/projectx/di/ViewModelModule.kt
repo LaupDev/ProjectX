@@ -1,7 +1,7 @@
 package com.laupdev.projectx.di
 
-import com.laupdev.projectx.presentation.ui.hotel.details.HotelDetailsViewModel
-import com.laupdev.projectx.presentation.ui.hotel.list.HotelsListViewModel
+import com.laupdev.projectx.presentation.ui.hotel.HotelDetailsViewModel
+import com.laupdev.projectx.presentation.ui.hotels_list.HotelsListViewModel
 import com.laupdev.projectx.presentation.ui.start.StartViewModel
 import com.laupdev.projectx.presentation.ui.user.UserViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel

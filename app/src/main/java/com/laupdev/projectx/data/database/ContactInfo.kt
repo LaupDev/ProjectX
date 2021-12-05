@@ -10,7 +10,9 @@ import androidx.room.*
         childColumns = ["hotel_id"],
         onDelete = ForeignKey.CASCADE
     )],
-    indices = [Index(value = ["hotel_id"])]
+    indices = [
+        Index(value = ["hotel_id"], unique = true)
+    ]
 )
 data class ContactInfo(
     @PrimaryKey(autoGenerate = true)

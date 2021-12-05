@@ -1,4 +1,4 @@
-package com.laupdev.projectx.presentation.ui.hotel.details
+package com.laupdev.projectx.presentation.ui.hotel
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,8 +13,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.laupdev.projectx.R
 import com.laupdev.projectx.databinding.FragmentHotelDetailsBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val ARG_HOTEL_ID = "hotel_id"
@@ -23,7 +21,7 @@ class HotelDetailsFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
 
-    private var hotelId: Int? = null
+    private var hotelId: Long? = null
 
     val viewModel by viewModel<HotelDetailsViewModel>()
 
@@ -33,7 +31,7 @@ class HotelDetailsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            hotelId = it.getInt(ARG_HOTEL_ID)
+            hotelId = it.getLong(ARG_HOTEL_ID)
         }
         viewModel.hotelId = hotelId!!
         auth = Firebase.auth

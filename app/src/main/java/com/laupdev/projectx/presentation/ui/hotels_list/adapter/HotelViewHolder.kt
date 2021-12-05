@@ -1,10 +1,10 @@
-package com.laupdev.projectx.presentation.ui.hotel.list.adapter
+package com.laupdev.projectx.presentation.ui.hotels_list.adapter
 
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.laupdev.projectx.data.database.Hotel
 import com.laupdev.projectx.databinding.ItemHotelBinding
-import com.laupdev.projectx.presentation.ui.hotel.list.HotelsListFragmentDirections
+import com.laupdev.projectx.presentation.ui.hotels_list.HotelsListFragmentDirections
 import com.squareup.picasso.Picasso
 import java.io.File
 

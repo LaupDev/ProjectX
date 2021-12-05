@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/hotelsListFragment"
-        android:name="com.laupdev.projectx.presentation.ui.hotel.list.HotelsListFragment"
+        android:name="com.laupdev.projectx.presentation.ui.hotels_list.HotelsListFragment"
         android:label="fragment_hotels_list"
         tools:layout="@layout/fragment_hotels_list" >
         <action
@@ -25,11 +25,11 @@
     </fragment>
     <fragment
         android:id="@+id/hotelDetailsFragment"
-        android:name="com.laupdev.projectx.presentation.ui.hotel.details.HotelDetailsFragment"
+        android:name="com.laupdev.projectx.presentation.ui.hotel.HotelDetailsFragment"
         android:label="fragment_hotel_details">
         <argument
             android:name="hotel_id"
-            app:argType="integer" />
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/startFragment"
