@@ -1,6 +1,6 @@
 # ProjectX
 
-The point of this project was to learn to build an app with good architecture
+The goal of this project was to learn how to create an application with good architecture.
 
 ## Used libraries, frameworks, and languages
 * Kotlin
