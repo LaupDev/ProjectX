@@ -67,9 +67,10 @@ class UserRegistrationFragment : Fragment() {
         if (!validateField(binding.emailInput, binding.emailInputEditText)) {
             isValid = false
         } else {
-            if (isEmail(binding.emailInputEditText.text.toString())) {
+            if (!isEmail(binding.emailInputEditText.text.toString())) {
                 binding.emailInput.error = "Not valid email"
                 binding.emailInput.isErrorEnabled = true
+                isValid = false
             } else {
                 binding.emailInput.isErrorEnabled = false
             }
@@ -92,7 +93,7 @@ class UserRegistrationFragment : Fragment() {
     }
 
     private fun isEmail(userInput: String): Boolean {
-        return userInput.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+".toRegex())
+        return userInput.matches("[a-zA-Z0-9._]+@[a-z]+\\.[a-z]+".toRegex())
     }
 
     override fun onDestroyView() {
